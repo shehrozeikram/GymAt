@@ -22,9 +22,9 @@ module Api
           end
         end
 
-        render json: {api_status: true, locale: I18n.locale.to_s, services: @services}
+        render json: {api_status: true, locale: I18n.locale.to_s, services: @services.uniq}
         rescue => e
-          render json: {api_status: false, locale: I18n.locale.to_s, services: @services}
+          render json: {api_status: false, locale: I18n.locale.to_s, services: @services.uniq}
         end
       end
 
