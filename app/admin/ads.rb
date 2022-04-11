@@ -5,7 +5,7 @@ ActiveAdmin.register Ad do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :ad_title, :ad_type, :category_id, :product_id, attachments: []
+   permit_params :ad_title, :ad_type,  attachments: []
   #
   # or
   #
@@ -19,7 +19,6 @@ ActiveAdmin.register Ad do
     f.inputs do
       f.input :ad_title
       f.input :ad_type
-      f.input :category_id , as: :select,  collection:  Category.all.collect{|cat| [cat.title, cat.id]}
       f.input :attachments, as: :file, input_html: { multiple: true }
     end
     f.actions
@@ -30,7 +29,6 @@ ActiveAdmin.register Ad do
     id_column
     column :ad_title
     column :ad_type
-    column :category_id
     column :attachments do |ad|
       ul do
         ad.attachments.each do |image|

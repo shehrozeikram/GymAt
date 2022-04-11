@@ -5,6 +5,7 @@
 #  id                  :bigint           not null, primary key
 #  ar_description      :string
 #  ar_title            :string
+#  attachments         :text
 #  description         :text
 #  ratings             :float
 #  title               :string
