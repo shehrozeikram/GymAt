@@ -41,6 +41,11 @@ Rails.application.routes.draw do
         get '/fetch_ads', to: 'ads#ads'
       end
 
+      resource :service do
+        get '/fetch_services', to: 'services#fetch_services'
+        get '/show_service', to: 'services#show_service'
+      end
+
 
     end
   end

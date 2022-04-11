@@ -16,6 +16,9 @@ gem 'jbuilder', '~> 2.7'
 #Attachments
 gem 'carrierwave'
 
+#Taging
+gem 'acts-as-taggable-on'
+
 # WebServer
 gem 'puma', '~> 5.6'
 gem 'rack', '~> 2.2.3'

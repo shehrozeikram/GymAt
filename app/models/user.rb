@@ -44,8 +44,11 @@ class User < ApplicationRecord
          :trackable, :validatable, :registerable
   mount_uploader :avatar,  AvatarUploader
 
+  acts_as_taggable_on :tags
+  acts_as_taggable_on :user_types
+
   has_many :appointments
-  has_many :services, through: :appointments
+  has_many :appointments, through:  :services
 
   include DeviseTokenAuth::Concerns::User
   serialize :tokens

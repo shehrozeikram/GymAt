@@ -5,12 +5,12 @@ ActiveAdmin.register Service do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title, :ar_title, :ar_description, :type, :service_provider_id
+  # permit_params :title, :ar_title, :ar_description, :type, :service_provider_id, :ratings, :description, :attachments, :tag_list, :service_type_list
   #
   # or
   #
   # permit_params do
-  #   permitted = [:title, :ar_title, :ar_description, :type, :service_provider_id]
+  #   permitted = [:title, :ar_title, :ar_description, :type, :service_provider_id, :ratings, :description, :attachments, :tag_list, :service_type_list]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

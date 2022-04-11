@@ -5,6 +5,8 @@
 #  id                  :bigint           not null, primary key
 #  ar_description      :string
 #  ar_title            :string
+#  description         :text
+#  ratings             :float
 #  title               :string
 #  type                :string
 #  created_at          :datetime         not null
