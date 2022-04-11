@@ -5,7 +5,7 @@ ActiveAdmin.register Service do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :title, :ar_title, :ar_description, :type, :service_provider_id, :ratings, :description, :attachments, :tag_list, :service_type_list, attachments: []
+   permit_params :title, :ar_title, :ar_description, :type, :service_provider_id, :ratings, :description, :attachments, :tag_list, :service_type_list, :user_id, attachments: []
 
   # or
   #
@@ -41,7 +41,7 @@ ActiveAdmin.register Service do
     column :tag_list
     column :service_type_list
     column :user_id do |s|
-      s.user.first_name
+      s.user.first_name rescue ""
     end
     column :attachments do |ad|
       ul do
