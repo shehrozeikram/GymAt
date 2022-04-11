@@ -48,8 +48,8 @@ class User < ApplicationRecord
   acts_as_taggable_on :user_types
 
   has_many :appointments
-  has_many :appointments, through:  :services
-
+  # has_many :appointments, through:  :services
+  has_many :services
   include DeviseTokenAuth::Concerns::User
   serialize :tokens
 
