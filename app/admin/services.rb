@@ -20,7 +20,7 @@ ActiveAdmin.register Service do
       f.input :ar_title
       f.input :description
       f.input :ar_description
-      f.input :service_provider_id, as: :select,  collection:  User.all.collect{|cat| [cat.title, cat.id]}
+      f.input :service_provider_id, as: :select,  collection:  User.all.collect{|cat| [cat.first_name, cat.id]}
       f.input :type
       f.input :ratings
       f.input :tag_list
