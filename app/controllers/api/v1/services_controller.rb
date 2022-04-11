@@ -9,8 +9,10 @@ module Api
         begin
         if params[:q].present?
           @services = Service.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%").page params[:page]
+        elsif params[:tags]
+          @services =Service.tagged_with(params[:tags]).order(title: :asc).page params[:page]
         else
-          @services = Service.all.order(title: :asc).page params[:page]
+          @services =Service.all.order(title: :asc).page params[:page]
         end
 
         if I18n.locale.to_s == "ar"
@@ -31,11 +33,11 @@ module Api
       def show_service
         begin
            unless params[:id].present?
-             return  display_error("Product ID is missing!")
+             return  display_error("Service ID is missing!")
            end
           if params[:id].present?
             @service = Service.find(params[:id])
-            return display_error("Product Not Present ")  unless @service.present?
+            return display_error("Service Not  Present ")  unless @service.present?
           end
 
            if I18n.locale.to_s == "ar"
