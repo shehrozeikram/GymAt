@@ -12,6 +12,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  service_provider_id :bigint           indexed
+#  user_id             :integer
 #
 # Indexes
 #
