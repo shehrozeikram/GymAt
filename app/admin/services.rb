@@ -21,7 +21,6 @@ ActiveAdmin.register Service do
       f.input :description
       f.input :ar_description
       f.input :service_provider_id, as: :select,  collection:  User.all.collect{|cat| [cat.first_name, cat.id]}
-      f.input :type
       f.input :ratings
       f.input :tag_list
       f.input :service_type_list
@@ -38,7 +37,6 @@ ActiveAdmin.register Service do
     column :description
     column :ar_description
     column :service_provider_id
-    column :type
     column :ratings
     column :tag_list
     column :service_type_list
