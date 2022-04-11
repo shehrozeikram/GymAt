@@ -1,0 +1,170 @@
+en:
+  active_admin:
+    charts:
+      sign_ups_per_month: 'Sign ups per month'
+    general: General
+    overview: Overview
+    session_info: Sign in info
+    this_month: This month
+    total: Total
+    dashboard_welcome:
+      welcome: Welcome to your Admin Backoffice
+      call_to_action: Here are some stats!
+  activerecord:
+    models:
+      user:
+        one: User
+        other: Users
+  errors:
+    server: 'An error ocurred'
+    network_throttling: 'Throttle limit reached'
+    record_not_found: '%{model} not found'
+    missing_param: 'The following param is missing or the value is empty: %{param}'
+    invalid_content_type: 'Invalid content type header'
+    page_overflow: 'The requested page does not exist'
+    invalid_reset_password_token: 'the reset password token is invalid'
+    authentication:
+      invalid_credentials: 'The credentials are not valid'
+      invalid_token: 'The token is not valid'
+      invalid_password_check: 'The current password is not valid'
+  emails:
+    reset_password:
+      recover_account: 'Recover account'
+  devise:
+    failure:
+      unauthenticated: 'Authentication is required to perform this action'
+
+  email: "Email"
+  title: "Title"
+  description: "Description"
+  address: "Address"
+  categories: "Categories"
+  products: "Products"
+  product: "Product"
+  category: "category"
+
+  buy_gift_for_myself: "Buy gift for myself"
+  buy_gift_for_someone: "Buy gift for someone"
+
+  deliver_date: "Deliver Date"
+  delivery_time: "Delivery Time"
+  add_to_cart: "Add To Cart"
+  availability: "Availability"
+  my_orders: "My Orders"
+  my_carts: "My Carts"
+  edit_profile: "Edit Profile"
+  continue_shopping: "Continue Shopping"
+  buy_credit: "Buy Credit"
+  share_credit: "Share Credit"
+  my_wallet: "My Wallet"
+  sub_total: "Sub Total"
+#  time: "time"
+  delivery_charges: "Delivery Charges"
+  total: "Total"
+  delivery_city: "Delivery City"
+  quantity: "Quantity"
+
+
+
+  search_gifts: "Search Gifts"
+  search_here: "Search Here"
+  in_stock: "In Stock"
+  home: "home"
+  select_date: "Select Date "
+  select_time: "Select Time"
+  go_to_my_cart: "Go to my Cart"
+  item_added: "Item Added"
+  go_to_my_orders: "Go to my Orders"
+  congratulations: "Congratulations"
+  order_message: "Your Order has been placed. You can view all details in My Order page."
+  back: "back"
+  my_cart: "My Cart"
+  checkout: "Checkout"
+
+  my_gifts: "My Gifts"
+  receive_gift: "Receive Gift"
+  forward_gift: "Forward Gift"
+  receive_in_money: "Receive In Money"
+  get_app_credit: "Get App Credit"
+  you_have_received_following_gift: "You have received following gift"
+  search: "search"
+
+  login_in: "Login In"
+  login_in_to_your_account: "Login in to your account"
+  password: "password"
+  sign_in: "Sign in"
+  login: "Login"
+  sign_up: "Sign up"
+  sign_up_to_create_your_account: "Sign Up to create your account"
+  name: "Name"
+  contact_number: "Contact Number"
+  confirm_password: "Confirm Password"
+
+  already_have_an_account: "Already have an account ?"
+  do_not_have_an_account: "Do not have an account?"
+
+  welcome_title: "GIVE THE BEAUTIFUL GIFTS"
+  welcome_slogan: "YOU DESERVE TO SHARE WITH YOUR LOVE ONES"
+  sign_up_free: "Sign up free"
+  header_home: "Home"
+  header_products: "Products"
+  header_my_cart: "My Cart"
+  header_logout: "Log Out"
+  header_profile: "Profile"
+
+  welcome_products: "OUR PRODUCTS"
+  welcome_pr_slogan: "CHOOSE TO BUY THE LISTED PRODUCTS"
+  all_products: "ALL PRODUCTS"
+  our_products: "Our Products"
+
+
+  available_in_stock: "Available in Stock"
+  Add_to_cart: "Add to cart"
+  Checkout: "Checkout"
+  Continue_Shopping: "Continue Shopping"
+  Buy_gift_for_myself: "Buy gift for myself"
+  Buy_gift_for_someone: "Buy gift for someone"
+  Delivery_Date: "Delivery Date"
+  Delivery_Time: "Delivery Time"
+  Sub_Total: "Sub Total"
+  Delivery_Charges: "Delivery Charges"
+  Totals: "Totals"
+
+  My_Wallet: "My Wallet"
+  Buy_Credit: "Buy Credit"
+  Share_Credit: "Share Credit"
+  My_Orders: "My Orders"
+  To_Pay: "To Pay"
+  To_Ship: "To Ship"
+  To_receive: "To receive"
+  My_Carts: "My Carts"
+  Edit_Profile: "Edit_Profile"
+  Ordering_Date: "Ordering Date"
+  Ordering_Status: "Ordering Status"
+
+
+  contact: "Contact"
+  go_to_actions: "Go to actions"
+  features: "Features"
+  rights: "Rights"
+  headphones: "Headphones"
+  flowers: "Flowers"
+  cakes: "Cakes"
+  watches: "Watches"
+  delivery: "Delivery"
+  24_services: "24/7 Services"
+  online_orders: "Online orders"
+  free_bundle: "Free bundle"
+  On_time_services: "On-time services"
+  gift_services: "Gift services"
+  privacy_policy: "Privacy Policy"
+  terms_of_use: "Terms of Use"
+  sitemap: "Sitemap"
+  search_for_gift: "Search for Gift"
+
+  legal: "2022 by gift builders. All rights reserved."
+  legal__links: "Get in touch. Everything is for you."
+
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"

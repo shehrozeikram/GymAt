@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyGift</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+
+  <body>
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Gift </title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+      />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+  </head>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <body>
+
+  <div class="header__primary" style="background-color: rgb(240, 34, 96);">
+    <nav class="navbar"><a href="/">
+      <img src="/logo.png" alt="logo" style="width: 19%">
+    </a>
+      <% if session[:locale].nil? %>
+        <%=link_to "AR", set_current_locale_path(locale: "ar"), remote: true, style: "font-size: 18px;color:white" %>
+      <%elsif  session[:locale] == "en" %>
+        <%=link_to "AR", set_current_locale_path(locale: "ar"), remote: true, style: "font-size: 18px;color:white" %>
+        <%else%>
+        <%=link_to "EN", set_current_locale_path(locale: "en"), remote: true ,style: "font-size: 18px;color:white" %>
+     <%end%>
+      <form action="#" class="form__search">
+        <button class="search__btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <input type="search" name="search" id="search" placeholder="<%=I18n.t("search_for_gift") %>">
+      </form>
+      <ul class="top_nav">
+        <li class="nav_item nav-item-1"><a href="/categories" class="nav_link"><%= I18n.t('header_home') %></a></li>
+        <li class="nav_item nav-item-2"><a href="/products" class="nav_link"><%= I18n.t('header_products') %></a></li>
+        <%if current_web_user.present? %>
+          <li class="nav_item nav-item-3"><a href="/cart" class="nav_link"><%= I18n.t('header_my_cart') %></a></li>
+<!--          <li class="nav_item nav-item-4"><a href="/users/log_out" class="nav_link" method="delete"><%#= I18n.t('header_logout') %></a></li>-->
+          <li class="nav_item nav-item-4"><a href="/users/<%= current_web_user.id%>/profile" class="nav_link" method="delete"><%= I18n.t('header_profile') %></a></li>
+      <%else%>
+          <li class="nav_item nav-item-4"><a href="/users/sign_in" class="nav_link"><%= I18n.t('sign_in') %></a></li>
+          <li class="nav_item nav-item-4"><a href="/users/sign_up" class="nav_link"><%= I18n.t('sign_up') %></a></li>
+          <%end%>
+
+      </ul>
+
+      <button class="btnMenuOpen">Menu</button>
+    </nav>
+
+  </div>
+
+  <%= yield %>
+  <img src="/public/logo.png" alt="logo" width="500" height="600">
+  <%= render partial: "layouts/footer" %>
+  </body>
+  </html>
+<script>
+
+    function add_to_cart(pr_id){
+        var qty = $(".quantity__input").val();
+        var pr_id = pr_id
+        debugger
+        $.ajax({
+            type: "GET",
+            url: "/add_to_cart",
+            data: {qty: qty,pr_id: pr_id },
+            cache: false,
+            success: function(data){
+                window.location.href = '/'
+                alert("Your selected  product has been added to cart")
+            },
+            error: function(data){
+                window.location.href = '/users/sign_in'
+            }
+        });
+    }
+    function update_cart(cart_id){
+        var qty = $(".quantity__input").val();
+        debugger
+        $.ajax({
+            type: "GET",
+            url: "/update_cart",
+            data: {qty: qty, cart_id: cart_id },
+            cache: false,
+            success: function(data){
+                location.reload();
+            }
+        });
+    }
+    function delete_cart(cart_id){
+        debugger
+        $.ajax({
+            type: "GET",
+            url: "/delete_cart",
+            data: {cart_id: cart_id },
+            cache: false,
+            success: function(data){
+                location.reload();
+            }
+        });
+    }
+</script>
