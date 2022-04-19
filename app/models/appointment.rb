@@ -6,6 +6,7 @@
 #  appointment_date    :datetime
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  client_id           :integer
 #  service_provider_id :bigint           indexed
 #  user_id             :bigint           indexed
 #
@@ -15,6 +16,8 @@
 #  index_appointments_on_user_id              (user_id)
 #
 class Appointment < ApplicationRecord
-  belongs_to :user
-  belongs_to :service_provider
+  has_many   :user_time_slots
+  belongs_to :client, :class_name => "User"
+  belongs_to :service_provider, :class_name => "User"
+  belongs_to :service
 end
