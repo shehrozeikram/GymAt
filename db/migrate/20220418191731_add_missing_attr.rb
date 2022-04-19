@@ -11,6 +11,7 @@ class AddMissingAttr < ActiveRecord::Migration[6.1]
     add_column :service_availabilities, :day, :string
     add_column :service_availabilities, :start_time, :time
     add_column :service_availabilities, :end_time, :time
+    # add_column :service_availabilities, :service_id, :integer
     add_column :service_availabilities, :service_provider_id, :integer
 
   end
