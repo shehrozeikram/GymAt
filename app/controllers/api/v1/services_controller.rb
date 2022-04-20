@@ -34,13 +34,13 @@ module Api
           begin
 
         service_availability = ServiceAvailability.where( service_provider_id: params[:service_provider_id], day: params[:day].split(/\W+/).first.capitalize).last
-          total_minutes = (service_availability.end_time - service_availability.start_time) / 60
+          total_minutes = (service_availability.end_time.strftime('%R').to_time - service_availability.start_time.strftime('%R').to_time) / 60
            time_slots = []
-        Rails.logger.info " ti####################{total_minutes}#########################"
+           Rails.logger.info " ti####################{total_minutes}#########################"
           (0..total_minutes).step(30) do |minutes|
             Rails.logger.info " ----------------------------------------------"
 
-            time = service_availability.start_time + minutes*60
+            time = service_availability.start_time.strftime('%R').to_time + minutes*60
             Rails.logger.info " time slot time slots#{time.strftime('%H:%M %p')}"
 
             time_slots << time.strftime('%H:%M %p')
@@ -70,6 +70,7 @@ module Api
              @service.description = @service.ar_description
              @service.title = @service.ar_title
            end
+
            days = ServiceAvailability.availability_days(@service.service_provider_id)
            available_slots = (Date.today..Date.today.next_month).select {""}.map!{|f|
              [f.strftime("%A"), f.strftime("%A %F")]}.map{|k,v| k.in?(days) ? v : ""}.reject(&:blank?)
