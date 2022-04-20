@@ -11,7 +11,16 @@ Rails.application.routes.draw do
   get  '/users/:id/edit_profile', to: 'users#edit_profile', as: "edit_profile"
   get  '/users/set_current_locale', to: 'users#set_current_locale', as: "set_current_locale"
 
-  root to: "categories#index"
+
+  resource :service do
+    get '/index', to: "services#index"
+    get '/shop', to: "services#shop"
+    get '/facilities', to: "services#facilities"
+    get '/individual', to: "services#individual"
+    get '/appartments', to: "services#appartments"
+  end
+
+  root to: "services#index"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
