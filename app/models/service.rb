@@ -27,5 +27,5 @@ class Service < ApplicationRecord
   acts_as_taggable_on :tags
   acts_as_taggable_on :service_types
   belongs_to :service_provider, :class_name => "User"
-  belongs_to :appointment
+  has_many :appointment
 end
