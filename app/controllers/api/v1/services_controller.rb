@@ -81,6 +81,16 @@ module Api
       end
 
 
+      def book_appointment
+        begin
+          Rails.logger.info params.inspect
+          # Appointment.create()
+          render json: {api_status: true, locale: I18n.locale.to_s, status: "ok"}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, status: "failed"}
+        end
+      end
+
       private
 
         def user
