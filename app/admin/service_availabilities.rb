@@ -5,14 +5,23 @@ ActiveAdmin.register ServiceAvailability do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :saturday, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :service_id
+   permit_params :day, :start_time, :end_time, :service_id, :service_provider_id
   #
   # or
   #
   # permit_params do
-  #   permitted = [:saturday, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :service_id]
+  #   permitted = [:day, :start_time, :end_time, :service_id, :service_provider_id]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
+  form(html: {multipart: true}) do |f|
+    f.inputs do
+      f.input :day
+      f.input :service_provider_id, as: :select,  collection:  User.all.collect{|cat| [cat.first_name, cat.id]}
+      f.input :start_time
+      f.input :end_time
+    end
+    f.actions
+  end
 end

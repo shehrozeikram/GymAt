@@ -12,6 +12,7 @@
 #  type                :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  service_id          :integer
 #  service_provider_id :bigint           indexed
 #  user_id             :integer
 #
@@ -25,6 +26,6 @@ class Service < ApplicationRecord
 
   acts_as_taggable_on :tags
   acts_as_taggable_on :service_types
-  # belongs_to :business
-   belongs_to :user
+  belongs_to :service_provider, :class_name => "User"
+  has_many :appointment
 end
