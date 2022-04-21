@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get '/facilities', to: "services#facilities"
     get '/individual', to: "services#individual"
     get '/appartments', to: "services#appartments"
+    get '/get_time_slots', to: "services#get_time_slots"
+    post '/book_appointment', to: "services#book_appointment"
   end
 
   root to: "services#index"

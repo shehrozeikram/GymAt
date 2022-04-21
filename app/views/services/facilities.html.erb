@@ -17,7 +17,8 @@
       <div id="allShops" class="b-tab active">
         <div class="grid-card-fx">
           <%Service.tagged_with(["facilities"]).order(title: :asc).uniq.each do  |service| %>
-        <div class="card card__item-1">
+            <a href="<%=service_path(id: service.id) %>">
+            <div class="card card__item-1">
             <div class="card__top">
               <img src="<%=service.attachments.first.url %>" alt="Beauty" class="card__img">
               <div class="ratings"><span class="icon_box"><i class="fa fa-star-o" aria-hidden="true"></i>
@@ -28,6 +29,7 @@
               <p><%=service.tags.join(' | ') %></p>
             </div>
           </div>
+            </a>
             <% end %>
 
 

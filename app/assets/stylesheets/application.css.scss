@@ -621,6 +621,140 @@ body {
 
 
 
+
+/* Book Appointment  */
+.book-appointment-grid-fx {
+  width: 60%;
+  margin: 3rem auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.grid-item-1 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.grid-item-1 .grid-image{
+  height: 10rem;
+  width: 10rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+
+.detail h3 {
+  font-size: 3rem;
+  color: var(--color-dark);
+}
+
+.select__group{
+  width: 100%;
+
+  margin-top: 4rem;
+
+  display: flex;
+
+}
+
+.select__group select {
+  /* width: 100%; */
+  width: 50%;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 1.6rem;
+}
+
+
+
+.grid-date-time-fx {
+  width: 60%;
+  margin: 3rem auto;
+}
+
+
+.grid-date-time-fx h3  {
+  font-size: 2rem;
+  color: var(--color-dark);
+}
+
+
+.grid-date-time-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 100px);
+  grid-gap: 2rem;
+  margin-top: rem;
+  justify-content: center;
+  align-content: center;
+  margin: 4rem 0;
+}
+
+
+.grid-date-time-container .grid-item {
+  background-color: var(--color-app-theme);
+  height: auto;
+  padding: 1rem;
+  color: #fff;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+}
+
+.grid-time-fx {
+  width: 60%;
+  margin: 3rem auto;
+}
+
+.grid-time-fx h3 {
+  font-size: 2rem;
+  color: var(--color-dark);
+}
+
+
+.grid-time {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 100px);
+  grid-gap: 2rem;
+  margin-top: rem;
+  justify-content: center;
+  align-content: center;
+  margin: 4rem 0;
+}
+
+.grid-time-item {
+  background-color: #259625b9;
+  color: var(--color-grey);
+  /* padding: 1rem 3rem; */
+  padding: .4rem;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.button--grid{
+  width: 40%;
+  margin: 2rem auto;
+}
+
+.button--grid button {
+  padding: 1rem 3rem;
+  text-align: center;
+  background-color: var(--color-app-theme);
+  color: var(--color-light);
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
 /* .card {
 
 } */

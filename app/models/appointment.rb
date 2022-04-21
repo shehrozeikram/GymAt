@@ -4,9 +4,12 @@
 #
 #  id                  :bigint           not null, primary key
 #  appointment_date    :datetime
+#  day_slot            :string
+#  time_slot           :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  client_id           :integer
+#  service_id          :integer
 #  service_provider_id :bigint           indexed
 #  user_id             :bigint           indexed
 #

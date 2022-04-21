@@ -63,13 +63,14 @@ gem 'pagy', '~> 5.10'
 gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'sentry-sidekiq'
-
+gem "rqrcode", "~> 2.0"
 group :development, :test do
   gem 'bullet', '~> 7.0.1'
   gem 'byebug', '>= 11.0.1', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'faker', '~> 2.19.0'
   gem 'rspec-rails', '~> 5.1.0'
+
 end
 
 group :development do
@@ -82,6 +83,7 @@ group :development do
   gem 'rubocop-rspec', '~> 2.8.0', require: false
   gem 'spring', '~> 2.1.1'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rails-erd'
 end
 
 group :test do
