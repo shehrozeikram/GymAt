@@ -42,6 +42,12 @@
   </div>
 </section>
 <script>
+    function select_time(c) {
+        console.log("select_day")
+        $(".time_slot").prop("checked", false)
+        $(this).prop("checked", true)
+        $(c).prop("checked", true)
+    }
     function select_day(c) {
         console.log("select_day")
         $(".day_slot").prop("checked", false)
