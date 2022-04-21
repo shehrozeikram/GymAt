@@ -8,46 +8,46 @@
 <section class="section section__header--secondary">
   <div class="header__primary">
     <div class="header-box">
-      <h1 class="heading-primary">Get Your Appointment in Easy Way</h1>
-      <a href="#" class="btn btn-sign-up">Start Free Trail</a>
+      <h1 class="heading-primary"><%=I18n.t("welcome_title") %></h1>
+      <a href="#" class="btn btn-sign-up"><%=I18n.t("free_trial") %></a>
     </div>
   </div>
 </section>
 
 <section class="section section__recommendations">
   <div class="recommendations">
-    <h2 class="heading__tertiary">What are you looking for?</h2>
+    <h2 class="heading__tertiary"><%=I18n.t("looking_for") %></h2>
     <div class="recommendation-grid">
       <a href="<%= shop_service_path %>" class="card card_item-1">
         <div class="icon__box">
           <i class="fa fa-shopping-bag" aria-hidden="true"></i>
         </div>
-        <h3>Shops</h3>
+        <h3><%=I18n.t("shops") %></h3>
       </a>
       <a href="<%= facilities_service_path %>" class="card card_item-2">
         <div class="icon__box">
           <i class="fa fa-shopping-bag" aria-hidden="true"></i>
         </div>
-        <h3>Facilities</h3>
+        <h3><%=I18n.t("facilities") %></h3>
       </a>
       <a href="<%= individual_service_path %>" class="card card_item-3">
         <div class="icon__box">
           <i class="fa fa-shopping-bag" aria-hidden="true"></i>
         </div>
-        <h3>Individuals</h3>
+        <h3><%=I18n.t("individuals") %></h3>
       </a>
       <a href="<%= appartments_service_path %>" class="card card_item-4">
         <div class="icon__box">
           <i class="fa fa-shopping-bag" aria-hidden="true"></i>
         </div>
-        <h3>Appartments</h3>
+        <h3><%=I18n.t("appartments") %></h3>
       </a>
     </div>
   </div>
 </section>
 <section class="section section__appointments">
   <div class="appointments__container">
-    <h2 class="heading__tertiary">Upcoming appointments</h2>
+    <h2 class="heading__tertiary"><%=I18n.t("upcomming_appointments") %></h2>
     <div class="appointments">
       <div class="card card__item--1">
         <span class="card_heading">Alhabeeb Hospital</span>
@@ -82,7 +82,7 @@
 </section>
 <section class="section section__recentlyAdded">
   <div class="recentAdded__container">
-    <h2 class="heading__tertiary">Recently Added</h2>
+    <h2 class="heading__tertiary"><%=I18n.t("recently_added") %></h2>
     <div class="recent-grid-fx">
       <div class="card card-grid-fx-1">
         <img src="/images/hospital.jpg" alt="Hospital Image" class="card__img">

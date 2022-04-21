@@ -7,7 +7,7 @@
 <section class="section section__individual">
 
   <div class="individual__container">
-    <h2 class="heading__tertiary">Appartments</h2>
+    <h2 class="heading__tertiary"><%= I18n.t("appartments") %></h2>
     <div class="individual-grid">
       <%Service.tagged_with(["appartment"]).order(title: :asc).uniq.each do  |service| %>
 

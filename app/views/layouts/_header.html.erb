@@ -1,10 +1,10 @@
 <header class="header">
-  <span class="logo">My Appointment</span>
+  <span class="logo"><%= I18n.t("my_appointment") %></span>
   <ul class="menu">
-    <li class="list__item"><%= link_to "Home", root_path %></li>
-    <li class="list__item"><%= link_to "Shops", shop_service_path %></li>
-    <li class="list__item"><%= link_to "Facilities", facilities_service_path %></li>
-    <li class="list__item"><%= link_to "Chat" %></li>
-    <li class="list__item"><%= link_to "Profile" %></li>
+    <li class="list__item"><%= link_to "#{I18n.t("home")}", root_path %></li>
+    <li class="list__item"><%= link_to "#{I18n.t("shops")}", shop_service_path %></li>
+    <li class="list__item"><%= link_to "#{I18n.t("facilities")}", facilities_service_path %></li>
+    <li class="list__item"><%= link_to "#{I18n.t("chat")}" %></li>
+    <li class="list__item"><%= link_to "#{I18n.t("profile")}" %></li>
   </ul>
 </header>
