@@ -18,7 +18,7 @@
 
       <div id="allShops" class="b-tab active">
         <div class="grid-card-fx">
-          <%@services.each do  |service| %>
+          <%Service.tagged_with(["shop"]).each do  |service| %>
             <div class="card card__item-1">
               <div class="card__top">
                 <img src="<%=service.attachments.first.url %>" alt="Beauty" class="card__img" style='width: 100%; height: 100%'>
