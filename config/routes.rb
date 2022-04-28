@@ -56,6 +56,8 @@ Rails.application.routes.draw do
         get '/fetch_services', to: 'services#fetch_services'
         get '/show_service', to: 'services#show_service'
         get '/time_slots', to: 'services#time_slots'
+        post '/book_appointment', to: "services#book_appointment"
+
       end
 
 
