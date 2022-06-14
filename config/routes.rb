@@ -60,6 +60,14 @@ Rails.application.routes.draw do
 
       end
 
+      resource :camel do
+        get '/fetch_camels', to: 'camels#fetch_camels'
+        get '/show_camel', to: 'camels#show_camel'
+        get '/fetch_camels_with_purpose', to: 'camels#fetch_camels_with_purpose'
+        post '/create_camel', to: "camels#create_camel"
+
+      end
+
 
     end
   end
