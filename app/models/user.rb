@@ -48,6 +48,7 @@ class User < ApplicationRecord
   acts_as_taggable_on :user_types
 
   has_many :appointments
+  has_many :camels
   # has_many :appointments, through:  :services
   has_many :services
   include DeviseTokenAuth::Concerns::User

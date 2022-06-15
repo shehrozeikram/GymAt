@@ -16,6 +16,7 @@
 #  type          :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  user_id       :integer
 #
 class Camel < ApplicationRecord
   mount_uploaders :attachments, AttachmentUploader
@@ -23,4 +24,7 @@ class Camel < ApplicationRecord
 
   acts_as_taggable_on :tags
   acts_as_taggable_on :service_types
+
+  belongs_to :user
+
 end
