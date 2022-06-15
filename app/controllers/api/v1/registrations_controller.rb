@@ -1,7 +1,7 @@
 module Api
   module V1
     class RegistrationsController < DeviseTokenAuth::RegistrationsController
-      include ExceptionHandler
+      # include ExceptionHandler
       include ActAsApiRequest
       # include Localizable
 

@@ -2,12 +2,12 @@ module ExceptionHandler
   extend ActiveSupport::Concern
 
   included do
-    rescue_from StandardError, with: :handle_standard_error
-    rescue_from ActionController::ParameterMissing, with: :render_parameter_missing
-    rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found
-    rescue_from ActionView::Template::Error, with: :handle_template_error
-    rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid
-    rescue_from Pagy::OverflowError, with: :render_page_overflow
+    # rescue_from StandardError, with: :handle_standard_error
+    # rescue_from ActionController::ParameterMissing, with: :render_parameter_missing
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found
+    # rescue_from ActionView::Template::Error, with: :handle_template_error
+    # rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid
+    # rescue_from Pagy::OverflowError, with: :render_page_overflow
 
     # before_action :set_sentry_context
   end

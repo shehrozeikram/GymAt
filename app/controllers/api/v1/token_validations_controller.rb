@@ -1,7 +1,7 @@
 module Api
   module V1
     class TokenValidationsController < DeviseTokenAuth::TokenValidationsController
-      include ExceptionHandler
+      # include ExceptionHandler
       include ActAsApiRequest
       include Localizable
 

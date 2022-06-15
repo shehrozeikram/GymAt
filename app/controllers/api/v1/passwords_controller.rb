@@ -1,7 +1,7 @@
 module Api
   module V1
     class PasswordsController < DeviseTokenAuth::PasswordsController
-      include ExceptionHandler
+      # include ExceptionHandler
       include ActAsApiRequest
       include Localizable
       include DeviseTokenAuth::Concerns::SetUserByToken
