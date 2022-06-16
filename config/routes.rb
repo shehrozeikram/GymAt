@@ -63,7 +63,19 @@ Rails.application.routes.draw do
       resource :camel do
         get '/fetch_camels', to: 'camels#fetch_camels'
         get '/show_camel', to: 'camels#show_camel'
+
+        # route for Buy
         get '/fetch_camels_with_purpose', to: 'camels#fetch_camels_with_purpose'
+
+        # routes for Bid
+        get '/fetch_camels_with_prupose_bid_almost_over', to: 'camels#fetch_camels_with_prupose_bid_almost_over'
+        get '/fetch_camels_with_prupose_bid_recently_added', to: 'camels#fetch_camels_with_prupose_bid_recently_added'
+
+        # routes for Rent
+        get '/fetch_camels_with_prupose_rent_for_competition', to: 'camels#fetch_camels_with_prupose_rent_for_competition'
+        get '/fetch_camels_with_prupose_rent_for_rides', to: 'camels#fetch_camels_with_prupose_rent_for_rides'
+
+
         post '/create_camel', to: "camels#create_camel"
 
       end

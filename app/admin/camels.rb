@@ -5,7 +5,7 @@ ActiveAdmin.register Camel do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name,  :gender, :age, :awards, :price, :description, :camel_type, :owner_name, :camel_purpose, :rent_purpose, :attachments, :tag_list, :user_id, :service_type_list
+  permit_params :name,  :gender, :age, :awards, :price, :description, :camel_type, :owner_name, :camel_purpose, :rent_purpose, :attachments, :tag_list, :user_id, :bid_type
   #
   # or
 
@@ -23,6 +23,7 @@ ActiveAdmin.register Camel do
       f.input :camel_purpose
       f.input :rent_purpose
       f.input :tag_list
+      f.input :bid_type
       f.input :user_id, as: :select,  collection:  User.all.collect{|cat| [cat.first_name, cat.id]}
 
       f.input :attachments, as: :file, input_html: { multiple: true }
