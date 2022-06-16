@@ -4,6 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  age           :integer
+#  attachments   :text
 #  awards        :string
 #  bid_type      :string
 #  camel_purpose :string

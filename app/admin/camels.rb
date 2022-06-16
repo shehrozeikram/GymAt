@@ -5,7 +5,7 @@ ActiveAdmin.register Camel do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name,  :gender, :age, :awards, :price, :description, :camel_type, :owner_name, :camel_purpose, :rent_purpose, :attachments, :tag_list, :user_id, :bid_type
+  permit_params :name,  :gender, :age, :awards, :price, :description, :camel_type, :owner_name, :camel_purpose, :rent_purpose,  :tag_list, :user_id, :bid_type, attachments: []
   #
   # or
 
@@ -30,5 +30,37 @@ ActiveAdmin.register Camel do
     end
     f.actions
   end
-  
+
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :type
+    column :gender
+    column :age
+    column :awards
+    column :price
+    column :description
+    column :camel_type
+    column :owner_name
+    column :camel_purpose
+    column :rent_purpose
+    column :tag_list
+    column :bid_type
+
+    column :user_id do |s|
+      s.user.first_name rescue ""
+    end
+    column :attachments do |ad|
+      ul do
+        ad.attachments.each do |image|
+          li do
+            image_tag(image.url, width: 100, height: 100) rescue ""
+          end
+        end
+      end
+    end
+    actions
+  end
+
 end
