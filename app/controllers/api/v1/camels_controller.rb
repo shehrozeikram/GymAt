@@ -89,11 +89,15 @@ module Api
 
           if params[:camel_purpose] == 'Rent'
 
-            @camels = Camel.where(camel_purpose: 'Rent')
+            @camels_for_competition = Camel.where(rent_purpose: 'For Competition')
+            @camels_for_rides = Camel.where(rent_purpose: 'For Rides')
+
+
           elsif params[:camel_purpose] == 'Buy'
-            @camels = Camel.where(camel_purpose: 'Buy')
+            @camels_for_buy = Camel.where(camel_purpose: 'Buy')
           else
-            @camels = Camel.where(camel_purpose: 'Bid')
+            @camels_almost_over = Camel.where(bid_type: 'Almost Over')
+            @camels_recently_added = Camel.where(bid_type: 'Recently Added')
           end
 
           if I18n.locale.to_s == "ar"
@@ -103,7 +107,7 @@ module Api
             end
           end
 
-          render json: {api_status: true, locale: I18n.locale.to_s, camels: @camels}
+          render json: {api_status: true, locale: I18n.locale.to_s, camels_for_competition: @camels_for_competition, camels_for_rides: @camels_for_rides, camels_for_buy: @camels_for_buy, camels_almost_over: @camels_almost_over,camels_recently_added: @camels_recently_added }
         rescue => e
           return display_error("Something Went Wrong!")
         end
@@ -125,7 +129,8 @@ module Api
           end
 
           if params[:bid_type] == 'Almost Over'
-            @camels = Camel.where(bid_type: 'Almost Over')
+            @camels_almost_over = Camel.where(bid_type: 'Almost Over')
+            @camels_recently_added = Camel.where(bid_type: 'Recently Added')
           else
             render json: {api_status: false, locale: I18n.locale.to_s, camels: @camels.errors}
           end
@@ -137,7 +142,7 @@ module Api
             end
           end
 
-          render json: {api_status: true, locale: I18n.locale.to_s, camels: @camels}
+          render json: {api_status: true, locale: I18n.locale.to_s, camels_almost_over: @camels_almost_over, camels_recently_added: @camels_recently_added}
         rescue => e
           return display_error("Something Went Wrong!")
         end
