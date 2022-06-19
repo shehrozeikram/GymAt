@@ -85,6 +85,9 @@ Rails.application.routes.draw do
 
       end
 
+      resource :bid do
+        post '/create_bid', to: 'bids#create_bid'
+      end
 
     end
   end

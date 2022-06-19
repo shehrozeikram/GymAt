@@ -28,5 +28,6 @@ class Camel < ApplicationRecord
   acts_as_taggable_on :service_types
 
   belongs_to :user
+  has_many :bids
 
 end
