@@ -5,6 +5,28 @@ module Api
       skip_before_action :authenticate_user!
       #Search List
 
+      def search_camels
+        begin
+          if params[:q].present?
+            @camels = Camel.where("LOWER(name) LIKE LOWER(?)", "%#{params[:q]}%").page params[:page]
+          elsif params[:tags]
+            @camels =Camel.tagged_with(params[:tags]).order(name: :asc).page params[:page]
+          else
+            @camels =Camel.all.order(name: :asc).page params[:page]
+          end
+
+          if I18n.locale.to_s == "ar"
+            @camels.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, camels: @camels.uniq}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, camels: @camels.uniq}
+        end
+      end
 
       def create_camel
         unless camel_params.present?

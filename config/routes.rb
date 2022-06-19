@@ -61,6 +61,11 @@ Rails.application.routes.draw do
       end
 
       resource :camel do
+
+        # search camels
+        get '/search_camels', to: 'camels#search_camels'
+
+
         get '/fetch_camels', to: 'camels#fetch_camels'
         get '/show_camel', to: 'camels#show_camel'
 
