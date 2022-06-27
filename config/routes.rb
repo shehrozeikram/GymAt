@@ -52,42 +52,21 @@ Rails.application.routes.draw do
         get '/fetch_ads', to: 'ads#ads'
       end
 
-      resource :service do
-        get '/fetch_services', to: 'services#fetch_services'
+      resource :services do
         get '/show_service', to: 'services#show_service'
-        get '/time_slots', to: 'services#time_slots'
-        post '/book_appointment', to: "services#book_appointment"
+        get '/fetch_services', to: 'services#fetch_services'
 
       end
 
-      resource :camel do
-
-        # search camels
-        get '/search_camels', to: 'camels#search_camels'
-
-
-        get '/fetch_camels', to: 'camels#fetch_camels'
-        get '/show_camel', to: 'camels#show_camel'
-
-        # route for Buy
-        get '/fetch_camels_with_purpose', to: 'camels#fetch_camels_with_purpose'
-
-        # routes for Bid
-        get '/fetch_camels_with_prupose_bid_almost_over', to: 'camels#fetch_camels_with_prupose_bid_almost_over'
-        get '/fetch_camels_with_prupose_bid_recently_added', to: 'camels#fetch_camels_with_prupose_bid_recently_added'
-
-        # routes for Rent
-        get '/fetch_camels_with_prupose_rent_for_competition', to: 'camels#fetch_camels_with_prupose_rent_for_competition'
-        get '/fetch_camels_with_prupose_rent_for_rides', to: 'camels#fetch_camels_with_prupose_rent_for_rides'
-
-
-        post '/create_camel', to: "camels#create_camel"
-
+      resource :business do
+        get '/show_business', to: 'businesses#show_business'
+        get '/fetch_business', to: 'businesses#fetch_business'
       end
 
-      resource :bid do
-        post '/create_bid', to: 'bids#create_bid'
+      resource :order do
+        post '/create_order', to: 'orders#create_order'
       end
+
 
     end
   end

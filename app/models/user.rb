@@ -46,7 +46,8 @@ class User < ApplicationRecord
 
   acts_as_taggable_on :tags
   acts_as_taggable_on :user_types
-
+  has_many :businesses
+  has_many :resturants
   has_many :bids
   has_many :appointments
   has_many :camels
