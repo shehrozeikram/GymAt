@@ -16,4 +16,9 @@
 #
 class Order < ApplicationRecord
   belongs_to :user
+
+  validates :order_detail, presence: true
+  validates :longitude, presence: true
+  validates :latitude, presence: true
+  validates :user_id, presence: true
 end
