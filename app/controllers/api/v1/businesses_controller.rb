@@ -9,11 +9,11 @@ module Api
       def fetch_business #For product search
         begin
           if params[:q].present?
-            @business = Business.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%").page params[:page]
+            @business = Business.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%")
           elsif params[:tags]
-            @business =Business.tagged_with(params[:tags]).order(title: :asc).page params[:page]
+            @business =Business.tagged_with(params[:tags]).order(title: :asc)
           else
-            @business =Business.all.order(title: :asc).page params[:page]
+            @business =Business.all.order(title: :asc)
           end
 
           if I18n.locale.to_s == "ar"

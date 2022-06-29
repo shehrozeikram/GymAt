@@ -11,23 +11,28 @@ module Api
         end
         if order_params.present?
           @order = Order.new(order_params)
-          @order.save
+          if @order.save_locations == true
+            @order.user.save_location_latitude = @order.latitude
+            @order.user.save_location_longitude = @order.longitude
+            @order.save
 
-          if I18n.locale.to_s == "ar"
-            @order.description = @order.ar_description
-            @order.title = @order.ar_title
+            if I18n.locale.to_s == "ar"
+              @order.description = @order.ar_description
+              @order.title = @order.ar_title
+            end
+            render json: {api_status: true, locale: I18n.locale.to_s, order: @order}
+          else
+
+            @order.save
+            render json: {api_status: true, locale: I18n.locale.to_s, order: @order}
           end
-
-          render json: {api_status: true, locale: I18n.locale.to_s, order: @order}
         end
-        # render json: {api_status: false, locale: I18n.locale.to_s, error: @order.errors}
-
       end
 
       private
 
       def order_params
-        params.permit(:order_detail, :comment, :delivery_address, :coupon)
+        params.permit(:order_detail, :comment, :delivery_address, :coupon, :save_locations, :longitude, :latitude, :user_id)
       end
 
     end

@@ -8,11 +8,11 @@ module Api
       def fetch_services #For product search
         begin
         if params[:q].present?
-          @services = Service.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%").page params[:page]
+          @services = Service.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%")
         elsif params[:tags]
-          @services =Service.tagged_with(params[:tags]).order(title: :asc).page params[:page]
+          @services =Service.tagged_with(params[:tags]).order(title: :asc)
         else
-          @services =Service.all.order(title: :asc).page params[:page]
+          @services =Service.all.order(title: :asc)
         end
 
         if I18n.locale.to_s == "ar"
