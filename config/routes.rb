@@ -48,8 +48,9 @@ Rails.application.routes.draw do
         end
       end
 
-      resource :ad do
-        get '/fetch_ads', to: 'ads#ads'
+      resource :reviews do
+        post '/create_review', to: 'reviews#create_review'
+        get '/show_reviews', to: 'reviews#show_reviews'
       end
 
       resource :services do
