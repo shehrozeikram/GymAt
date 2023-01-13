@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       resource :business do
         get '/show_business', to: 'businesses#show_business'
         get '/fetch_business', to: 'businesses#fetch_business'
+        get '/search_business', to: 'businesses#search_business'
       end
 
       resource :order do
