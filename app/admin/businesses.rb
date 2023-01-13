@@ -5,18 +5,23 @@ ActiveAdmin.register Business do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :description, :distance, :ratings, :longitude, :latitude, :user_id, :tag_list, attachments: []
+  permit_params :title, :description, :city, :opening_time, :closing_time, :distance, :ratings, :longitude, :latitude, :user_id, :tag_list, :price, attachments: []
 
 
   form(html: {multipart: true}) do |f|
     f.inputs do
       f.input :title
+      f.input :description
+      f.input :city
+      f.input :opening_time
+      f.input :closing_time
       f.input :distance
       # f.input :service_provider_id, as: :select,  collection:  User.all.collect{|cat| [cat.first_name, cat.id]}
       f.input :ratings
       f.input :longitude
       f.input :latitude
       f.input :tag_list
+      f.input :price
       f.input :user_id, as: :select,  collection:  User.all.collect{|cat| [cat.first_name, cat.id]}
       f.input :attachments, as: :file, input_html: { multiple: true }
     end
