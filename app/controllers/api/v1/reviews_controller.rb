@@ -22,7 +22,25 @@ class ReviewsController < ApplicationController
   end
 
   def show_reviews
+    begin
+      unless params[:id].present?
+        return  display_error("Business ID is missing!")
+      end
+      if params[:id].present?
+        @review =Review.where(business_id: params[:id])
+      end
 
+      if I18n.locale.to_s == "ar"
+        @review.description = @review.ar_description
+        @review.title = @review.ar_title
+      end
+
+      # @service = @service.to_json
+
+      return render json: {api_status: true, locale: I18n.locale.to_s, review: @review }
+    rescue => e
+      return display_error("Something Went Wrong!")
+    end
   end
 
   private
