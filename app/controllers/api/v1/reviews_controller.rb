@@ -23,11 +23,11 @@ class ReviewsController < ApplicationController
 
   def show_reviews
     begin
-      unless params[:id].present?
+      unless params[:business_id].present?
         return  display_error("Business ID is missing!")
       end
-      if params[:id].present?
-        @review =Review.where(business_id: params[:id])
+      if params[:business_id].present?
+        @review =Review.where(business_id: params[:business_id])
       end
 
       if I18n.locale.to_s == "ar"
