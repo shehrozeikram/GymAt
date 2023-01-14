@@ -10,8 +10,8 @@ module Api
         begin
           if params[:q].present?
             @business = Business.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%")
-          elsif params[:tags]
-            @business =Business.tagged_with(params[:tags]).order(title: :asc)
+          elsif params[:business_type]
+            @business =Business.where(business_type: params[:business_type])
           else
             @business =Business.all.order(title: :asc)
           end
@@ -28,7 +28,6 @@ module Api
           render json: {api_status: false, locale: I18n.locale.to_s, business: @business}
         end
       end
-
 
 
       def show_business
@@ -58,8 +57,6 @@ module Api
         begin
           if params[:q].present?
             @business = Business.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%").page params[:page]
-          elsif params[:tags]
-            @business =Business.tagged_with(params[:tags]).order(title: :asc).page params[:page]
           else
             @business =Business.all.order(title: :asc).page params[:page]
           end

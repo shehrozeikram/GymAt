@@ -5,12 +5,13 @@ ActiveAdmin.register Business do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :description, :city, :opening_time, :closing_time, :distance, :ratings, :longitude, :latitude, :user_id, :tag_list, :price, attachments: []
+  permit_params :title, :business_type, :description, :city, :opening_time, :closing_time, :distance, :ratings, :longitude, :latitude, :user_id, :tag_list, :price, attachments: []
 
 
   form(html: {multipart: true}) do |f|
     f.inputs do
       f.input :title
+      f.input :business_type
       f.input :description
       f.input :city
       f.input :opening_time
@@ -32,6 +33,11 @@ ActiveAdmin.register Business do
     selectable_column
     id_column
     column :title
+    column :business_type
+    column :description
+    column :city
+    column :opening_time
+    column :closing_time
     column :distance
     column :ratings
     column :longitude
