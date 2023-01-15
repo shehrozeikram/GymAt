@@ -52,7 +52,7 @@ class User < ApplicationRecord
   has_many :businesses
   has_many :resturants
   has_many :reviews
-  has_many :appointments
+  has_many :subscriptions
   has_many :camels
   # has_many :appointments, through:  :services
   has_many :services

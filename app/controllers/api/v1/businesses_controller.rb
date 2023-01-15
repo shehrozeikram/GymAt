@@ -74,6 +74,29 @@ module Api
         end
       end
 
+      # subscription route
+      def create_subscription
+        begin
+          unless subscription_params.present?
+            return display_error('All params are not present')
+          end
+          if subscription_params.present?
+            @subscription = Subscription.new(subscription_params)
+            if  @subscription.save!
+              render json: {api_status: true, locale: I18n.locale.to_s, subscription: @subscription}
+            end
+          else
+            render json: {api_status: false, locale: I18n.locale.to_s, error: @subscription.errors}
+          end
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, error: @subscription.errors}
+        end
+      end
+
+      private
+      def subscription_params
+        params.permit( :full_name, :start_date, :subscription_type, :amount, :discount, :special_offer, :total_amount, :payment_id, :user_id, :business_id)
+      end
 
       private
 

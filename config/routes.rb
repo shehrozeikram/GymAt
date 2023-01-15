@@ -53,16 +53,13 @@ Rails.application.routes.draw do
         get '/show_reviews', to: 'reviews#show_reviews'
       end
 
-      resource :services do
-        get '/show_service', to: 'services#show_service'
-        get '/fetch_services', to: 'services#fetch_services'
-
-      end
-
       resource :business do
         get '/show_business', to: 'businesses#show_business'
         get '/fetch_business', to: 'businesses#fetch_business'
         get '/search_business', to: 'businesses#search_business'
+
+        # subscription route
+        post '/create_subscription', to: 'businesses#create_subscription'
       end
 
       resource :order do
