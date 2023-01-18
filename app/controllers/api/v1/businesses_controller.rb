@@ -53,27 +53,6 @@ module Api
         end
       end
 
-      def search_business
-        begin
-          if params[:q].present?
-            @business = Business.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%").page params[:page]
-          else
-            @business =Business.all.order(title: :asc).page params[:page]
-          end
-
-          if I18n.locale.to_s == "ar"
-            @business.each do |pr|
-              pr.description = pr.ar_description
-              pr.title = pr.ar_title
-            end
-          end
-
-          render json: {api_status: true, locale: I18n.locale.to_s, business: @business.uniq}
-        rescue => e
-          render json: {api_status: false, locale: I18n.locale.to_s, business: @business.uniq}
-        end
-      end
-
       # subscription route
       def create_subscription
         begin
