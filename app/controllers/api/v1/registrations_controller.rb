@@ -8,7 +8,7 @@ module Api
       private
 
       def sign_up_params
-        params.permit(:email, :password, :first_name, :last_name, :username,  :address, :locale, :avatar, :contact_number )
+        params.permit(:email, :password, :first_name, :last_name, :username,  :address, :locale, :contact_number, attachments: [] )
       end
 
       def render_create_success

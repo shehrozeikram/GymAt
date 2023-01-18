@@ -4,7 +4,7 @@
 #
 #  id                      :bigint           not null, primary key
 #  address                 :string
-#  avatar                  :string
+#  attachments             :text
 #  confirmation_sent_at    :datetime
 #  confirmation_token      :string           indexed
 #  confirmed_at            :datetime
@@ -44,7 +44,9 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :recoverable,
          :trackable, :validatable, :registerable
-  mount_uploader :avatar,  AvatarUploader
+
+  mount_uploaders :attachments, AttachmentUploader
+  serialize :attachments, JSON
 
   acts_as_taggable_on :tags
   acts_as_taggable_on :user_types
@@ -53,7 +55,7 @@ class User < ApplicationRecord
   has_many :resturants
   has_many :reviews
   has_many :subscriptions
-  has_many :camels
+  has_many :shops
   # has_many :appointments, through:  :services
   has_many :services
   include DeviseTokenAuth::Concerns::User
