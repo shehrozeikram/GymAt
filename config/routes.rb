@@ -45,13 +45,6 @@ Rails.application.routes.draw do
         registrations: 'registrations'
       }
 
-      # devise_scope :user do
-      #   resources :users, only: [] do
-      #     controller :registrations do
-      #       post :create, on: :collection
-      #     end
-      #   end
-      # end
 
       resource :reviews do
         post '/create_review', to: 'reviews#create_review'
@@ -69,6 +62,16 @@ Rails.application.routes.draw do
 
       end
 
+      resource :resturants do
+        get '/show_resturant', to: 'resturants#show_resturant'
+        get '/fetch_resturants', to: 'resturants#fetch_resturants'
+
+      end
+
+      resource :resturants_dishes do
+        get '/show_dish', to: 'resturants_dishes#show_dish'
+        get '/fetch_dishes', to: 'resturants_dishes#fetch_dishes'
+      end
 
       resource :business do
         get '/show_business', to: 'businesses#show_business'
