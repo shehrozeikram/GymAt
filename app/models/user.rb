@@ -56,8 +56,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :subscriptions
   has_many :shops
-  # has_many :appointments, through:  :services
-  has_many :services
+  has_many :payments
+  has_many :checkouts
   include DeviseTokenAuth::Concerns::User
   serialize :tokens
 

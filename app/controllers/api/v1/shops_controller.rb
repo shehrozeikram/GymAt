@@ -47,15 +47,36 @@ module Api
 
           # @service = @service.to_json
 
-          return render json: {api_status: true, locale: I18n.locale.to_s, shop: @shop }
+          return render json: {api_status: true, locale: I18n.locale.to_s, shop: @shop, include:  ['users']  }
         rescue => e
           return display_error("Something Went Wrong!")
         end
       end
 
 
+      def checkout
+        begin
+          unless checkout_params.present?
+            return display_error('All params are not present')
+          end
+          if checkout_params.present?
+            @checkout = Checkout.new(checkout_params)
+            if  @checkout.save!
+              render json: {api_status: true, locale: I18n.locale.to_s, checkout: @checkout}
+            end
+          else
+            render json: {api_status: false, locale: I18n.locale.to_s, error: @checkout.errors}
+          end
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, error: @checkout.errors}
+        end
+
+      end
 
       private
+      def checkout_params
+        params.permit( :title, :free_delivery, :price, :quantity, :sub_total, :shipping_fee, :discount, :total, :user_id, :shop_id, :payment_id, attachments: [])
+        end
 
       def user
         @user ||= current_user

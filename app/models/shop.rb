@@ -19,4 +19,5 @@ class Shop < ApplicationRecord
   serialize :attachments, JSON
 
   belongs_to :user
+  has_many :checkouts
 end

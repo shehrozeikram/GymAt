@@ -61,7 +61,13 @@ Rails.application.routes.draw do
       resource :shops do
         get '/show_shop', to: 'shops#show_shop'
         get '/fetch_shops', to: 'shops#fetch_shops'
-        end
+        post '/checkout', to: 'shops#checkout'
+      end
+
+      resource :payments do
+        post '/payment', to: 'payments#payment'
+
+      end
 
 
       resource :business do
