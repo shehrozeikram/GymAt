@@ -81,8 +81,9 @@ Rails.application.routes.draw do
         post '/create_subscription', to: 'businesses#create_subscription'
       end
 
-      resource :order do
+      resource :orders do
         post '/create_order', to: 'orders#create_order'
+        get '/order_again', to: 'orders#order_again'
       end
 
 

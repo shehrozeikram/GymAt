@@ -17,4 +17,5 @@ class Payment < ApplicationRecord
   belongs_to :subscription
   belongs_to :checkout
   belongs_to :user
+  belongs_to :order
 end

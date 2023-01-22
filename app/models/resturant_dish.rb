@@ -15,4 +15,6 @@ class ResturantDish < ApplicationRecord
   serialize :attachments, JSON
 
   belongs_to :resturant
+  has_many :orders
+
 end
