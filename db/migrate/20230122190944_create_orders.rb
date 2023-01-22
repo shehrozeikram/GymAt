@@ -7,7 +7,6 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :user_id
       t.integer :resturant_dish_id
       t.integer :payment_id
-
       t.timestamps
     end
   end
