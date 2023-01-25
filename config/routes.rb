@@ -59,6 +59,13 @@ Rails.application.routes.draw do
 
       end
 
+      resource :trainers do
+        get '/show_trainer', to: 'trainers#show_trainer'
+        get '/fetch_trainers', to: 'trainers#fetch_trainers'
+        post '/create_trainer_subscription', to: 'trainers#create_trainer_subscription'
+
+      end
+
       resource :payments do
         post '/payment', to: 'payments#payment'
 
