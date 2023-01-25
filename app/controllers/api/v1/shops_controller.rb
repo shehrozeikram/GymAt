@@ -73,6 +73,30 @@ module Api
 
       end
 
+      def fetch_related_products #For product search
+        begin
+          if params[:q].present?
+            @related_products = RelatedShop.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%")
+          elsif params[:shop_id]
+            @related_products =RelatedShop.where(shop_id: params[:shop_id])
+          else
+            @related_products =RelatedShop.all.order(title: :asc)
+          end
+
+          if I18n.locale.to_s == "ar"
+            @related_products.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, related_products: @related_products}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, related_products: @related_products.errors}
+        end
+      end
+
+
       private
       def checkout_params
         params.permit( :title, :free_delivery, :price, :quantity, :sub_total, :shipping_fee, :discount, :total, :user_id, :shop_id, :payment_id, attachments: [])

@@ -55,6 +55,8 @@ Rails.application.routes.draw do
         get '/show_shop', to: 'shops#show_shop'
         get '/fetch_shops', to: 'shops#fetch_shops'
         post '/checkout', to: 'shops#checkout'
+        get '/fetch_related_products', to: 'shops#fetch_related_products'
+
       end
 
       resource :payments do
@@ -71,6 +73,7 @@ Rails.application.routes.draw do
       resource :resturants_dishes do
         get '/show_dish', to: 'resturants_dishes#show_dish'
         get '/fetch_dishes', to: 'resturants_dishes#fetch_dishes'
+        get '/best_seller', to: 'resturants_dishes#best_seller'
       end
 
       resource :business do
@@ -81,9 +84,9 @@ Rails.application.routes.draw do
         post '/create_subscription', to: 'businesses#create_subscription'
       end
 
-      resource :orders do
-        post '/create_order', to: 'orders#create_order'
-        get '/order_again', to: 'orders#order_again'
+      resource :dish_orders do
+        post '/create_order', to: 'dish_orders#create_order'
+        get '/order_again', to: 'dish_orders#order_again'
       end
 
 

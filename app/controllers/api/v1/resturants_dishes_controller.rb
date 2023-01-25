@@ -53,6 +53,21 @@ module Api
         end
       end
 
+      def best_seller
+        begin
+        @best_seller = ResturantDish.where("order_counter > ?", ResturantDish.minimum(:order_counter)).order(order_counter: :desc).limit(5)
+
+        if I18n.locale.to_s == "ar"
+          @dish.description = @dish.ar_description
+          @dish.title = @dish.ar_title
+        end
+
+        render json: {api_status: true, locale: I18n.locale.to_s, best_seller: @best_seller}
+      rescue => e
+        return display_error("Something Went Wrong!")
+      end
+      end
+
 
       private
 

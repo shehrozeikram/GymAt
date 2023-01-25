@@ -50,7 +50,7 @@ class User < ApplicationRecord
 
   acts_as_taggable_on :tags
   acts_as_taggable_on :user_types
-  has_many :orders
+  has_many :dish_orders
   has_many :businesses
   has_many :resturants
   has_many :reviews
@@ -58,6 +58,7 @@ class User < ApplicationRecord
   has_many :shops
   has_many :payments
   has_many :checkouts
+  has_many :related_shops
   include DeviseTokenAuth::Concerns::User
   serialize :tokens
 
