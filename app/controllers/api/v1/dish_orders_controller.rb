@@ -49,9 +49,9 @@ module Api
 
           # @service = @service.to_json
 
-          return render json: {api_status: true, locale: I18n.locale.to_s, order_again: @order_again }
+          return render json: {api_status: true, locale: I18n.locale.to_s, order_again: @order_again.as_json( :include => [:resturant_dish] )}
         rescue => e
-          return display_error("Something Went Wrong!")
+          render json: {api_status: false, error: 'SomeThing went wrong'}
         end
       end
 
