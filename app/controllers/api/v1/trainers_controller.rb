@@ -81,7 +81,7 @@ module Api
       private
 
       def trainer_subscription_params
-        params.permit( :date, :time, :trainer_id, :user_id)
+        params.permit( :start_date, :end_date, :time, :trainer_id, :user_id)
       end
 
       def trainer_params

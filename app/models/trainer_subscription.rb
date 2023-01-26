@@ -4,6 +4,8 @@
 #
 #  id         :bigint           not null, primary key
 #  date       :date
+#  end_date   :date
+#  start_date :date
 #  time       :time
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
