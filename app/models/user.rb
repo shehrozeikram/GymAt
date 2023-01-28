@@ -56,6 +56,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :subscriptions
   has_many :trainer_subscriptions
+  has_many :training_programs
   has_many :shops
   has_many :payments
   has_many :checkouts

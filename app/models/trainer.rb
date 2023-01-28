@@ -21,5 +21,6 @@ class Trainer < ApplicationRecord
   serialize :avatar, JSON
 
   has_many :trainer_subscriptions
+  has_many :training_programs
 
 end

@@ -59,12 +59,24 @@ Rails.application.routes.draw do
 
       end
 
+
       resource :trainers do
         get '/show_trainer', to: 'trainers#show_trainer'
         get '/fetch_trainers', to: 'trainers#fetch_trainers'
         post '/create_trainer_subscription', to: 'trainers#create_trainer_subscription'
+      end
+
+      resource :training_programs do
+        get '/show_training_program', to: 'training_programs#show_training_program'
+        get '/fetch_training_programs', to: 'training_programs#fetch_training_programs'
+        # post '/create_trainer_subscription', to: 'trainers#create_trainer_subscription'
+
+        get '/show_activity', to: 'training_programs#show_activity'
+        get '/fetch_activities', to: 'training_programs#fetch_activities'
 
       end
+
+
 
       resource :payments do
         post '/payment', to: 'payments#payment'
