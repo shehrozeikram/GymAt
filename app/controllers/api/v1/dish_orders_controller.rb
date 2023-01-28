@@ -17,7 +17,7 @@ module Api
             @order.order_counter += 1
             @order.save!
             if  @dish_order.save!
-              render json: {api_status: true, locale: I18n.locale.to_s, dish_order: @dish_order }
+              render json: {api_status: true, locale: I18n.locale.to_s, dish_order: @dish_order.as_json( :include => [:resturant_dish] ) }
             end
           else
             render json: {api_status: false, locale: I18n.locale.to_s, error: @dish_order.errors}
