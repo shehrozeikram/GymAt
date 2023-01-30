@@ -23,7 +23,7 @@ module Api
             end
           end
 
-          render json: {api_status: true, locale: I18n.locale.to_s, training_programs: @training_programs}
+          render json: {api_status: true, locale: I18n.locale.to_s, training_programs: @training_programs.as_json( :include => [:trainer] )}
         rescue => e
           render json: {api_status: false, locale: I18n.locale.to_s, training_programs: @training_programs}
         end
@@ -81,8 +81,8 @@ module Api
         begin
           if params[:q].present?
             @activities = Activity.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%")
-          elsif params[:id]
-            @activities = Activity.where(day: params[:day])
+          elsif
+            @activities = Activity.where(training_program_id: params[:training_program_id]).where(day: params[:day])
           else
             @activities =Activity.all.order(title: :asc)
           end
