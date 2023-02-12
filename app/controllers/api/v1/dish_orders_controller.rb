@@ -27,6 +27,25 @@ module Api
         end
       end
 
+      def complete_order
+        begin
+          if params[:id].present?
+            @complete_order = DishOrder.find(params[:id]).update(order_completed: true)
+            @result_request = DishOrder.where(id: params[:id])
+          end
+
+          if I18n.locale.to_s == "ar"
+            @complete_order.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, complete_order: @complete_order, result_request: @result_request }
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, error: @complete_order.errors}
+        end
+      end
 
       def order_again
         begin

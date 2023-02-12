@@ -94,7 +94,7 @@ module Api
             end
           end
 
-          render json: {api_status: true, locale: I18n.locale.to_s, activities: @activities}
+          render json: {api_status: true, locale: I18n.locale.to_s, activities: @activities.as_json( :include => [:trainer] )}
         rescue => e
           render json: {api_status: false, locale: I18n.locale.to_s, activities: @activities}
         end
@@ -129,10 +129,6 @@ module Api
 
       # def trainer_subscription_params
       #   params.permit( :start_date, :end_date, :time, :trainer_id, :user_id)
-      # end
-
-      # def trainer_params
-      #   params.permit( :name, :trainer_type, :subscribers, :rating, avatar: [], attachments: [])
       # end
 
       def user

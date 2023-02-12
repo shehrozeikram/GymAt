@@ -106,6 +106,7 @@ Rails.application.routes.draw do
       resource :dish_orders do
         post '/create_order', to: 'dish_orders#create_order'
         get '/order_again', to: 'dish_orders#order_again'
+        put '/complete_order', to: 'dish_orders#complete_order'
       end
 
 

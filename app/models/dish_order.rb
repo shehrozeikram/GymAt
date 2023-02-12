@@ -7,6 +7,7 @@
 #  discount          :float
 #  latitude          :float
 #  longitude         :float
+#  order_completed   :boolean          default(FALSE)
 #  self_pickup       :boolean
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
