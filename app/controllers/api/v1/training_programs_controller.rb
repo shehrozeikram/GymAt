@@ -124,12 +124,30 @@ module Api
         end
       end
 
+      def complete_activity
+        begin
+          unless complete_activity_params.present?
+            return display_error('All params are not present')
+          end
+          if complete_activity_params.present?
+            @complete_activity = CompleteActivity.new(complete_activity_params)
+            if  @complete_activity.save!
+              render json: {api_status: true, locale: I18n.locale.to_s, complete_activity: @complete_activity.as_json(:include => [:user]) }
+            end
+          else
+            render json: {api_status: false, locale: I18n.locale.to_s, error: @complete_activity.errors}
+          end
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, error: @complete_activity.errors}
+        end
+      end
+
 
       private
 
-      # def trainer_subscription_params
-      #   params.permit( :start_date, :end_date, :time, :trainer_id, :user_id)
-      # end
+      def complete_activity_params
+        params.permit( :activity_id, :user_id, :item_1, :item_2, :item_3, :item_4, :item_5)
+      end
 
       def user
         @user ||= current_user

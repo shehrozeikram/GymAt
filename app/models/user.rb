@@ -51,6 +51,7 @@ class User < ApplicationRecord
   acts_as_taggable_on :tags
   acts_as_taggable_on :user_types
   has_many :dish_orders
+  has_many :complete_activities
   has_many :businesses
   has_many :resturants
   has_many :reviews
