@@ -4,6 +4,7 @@
 #
 #  id                :bigint           not null, primary key
 #  amount            :string
+#  business_type     :string
 #  discount          :string
 #  full_name         :string
 #  special_offer     :string

@@ -100,12 +100,14 @@ Rails.application.routes.draw do
 
         # subscription route
         post '/create_subscription', to: 'businesses#create_subscription'
+        get '/fetch_subscriptions' , to: 'businesses#fetch_subscriptions'
       end
 
       resource :dish_orders do
         post '/create_order', to: 'dish_orders#create_order'
         get '/order_again', to: 'dish_orders#order_again'
         put '/complete_order', to: 'dish_orders#complete_order'
+        get '/fetch_orders', to: 'dish_orders#fetch_orders'
       end
 
 

@@ -5,7 +5,7 @@ ActiveAdmin.register Subscription do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :full_name, :start_date, :subscription_type, :amount, :discount, :special_offer, :total_amount, :payment_id, :user_id, :business_id
+  permit_params :full_name, :start_date, :subscription_type, :amount, :discount, :special_offer, :total_amount, :business_type, :payment_id, :user_id, :business_id
   #
   # or
   #
@@ -24,6 +24,7 @@ ActiveAdmin.register Subscription do
       f.input :discount
       f.input :special_offer
       f.input :total_amount
+      f.input :business_type
       f.input :payment_id, as: :select,  collection:  Payment.all.collect{|cat| [ cat.id]}
       f.input :user_id, as: :select,  collection:  User.all.collect{|cat| [cat.first_name, cat.id]}
       f.input :business_id, as: :select,  collection:  Business.all.collect{|cat| [cat.title, cat.id]}
@@ -41,6 +42,7 @@ ActiveAdmin.register Subscription do
     column :discount
     column :special_offer
     column :total_amount
+    column :business_type
     column :payment_id do |s|
       s.user.id rescue ""
     end

@@ -74,6 +74,27 @@ module Api
         end
       end
 
+      def fetch_orders
+        begin
+          if params[:user_id].present?
+            @orders = DishOrder.where(user_id: params[:user_id])
+          else
+            @orders = DishOrder.all
+          end
+
+          if I18n.locale.to_s == "ar"
+            @orders.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, orders: @orders.as_json( :include => [:user] )}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, error: @orders.errors}
+        end
+      end
+
 
       private
 
