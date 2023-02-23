@@ -41,9 +41,15 @@ Rails.application.routes.draw do
       get '/default_locales', to: 'api#default_locales'
 
       resource :user, only: %i[show update]
-      devise_for :users, :controllers => {
-        registrations: 'registrations'
-      }
+
+      devise_scope :user do
+        resources :users, only: [] do
+          controller :registrations do
+            post :create, on: :collection
+          end
+        end
+      end
+
 
 
       resource :reviews do
