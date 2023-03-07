@@ -29,6 +29,38 @@ module Api
         end
       end
 
+      def filter_shops #For product search
+        begin
+          unless params[:shop_type].present?
+            return  display_error("Shop Type is missing!")
+          end
+          if params[:q].present?
+            @shops = Shop.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%")
+          elsif  params[:Suggested] == 'true'
+            @shops = Shop.where(shop_type: params[:shop_type])
+          elsif  params[:New] == 'true'
+            @shops = Shop.where(shop_type: params[:shop_type]).order(created_at: :desc)
+          elsif  params[:'Price (low to high)'] == 'true'
+            @shops =Shop.where(shop_type: params[:shop_type]).order(price: :asc)
+          elsif  params[:'Price (high to low)'] == 'true'
+            @shops =Shop.where(shop_type: params[:shop_type]).order(price: :desc)
+          else
+            @shops =Shop.all.order(title: :asc)
+          end
+
+          if I18n.locale.to_s == "ar"
+            @business.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, shops: @shops}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, shops: @shops}
+        end
+      end
+
 
       def show_shop
         begin

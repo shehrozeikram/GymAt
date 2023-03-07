@@ -30,6 +30,38 @@ module Api
       end
 
 
+      def filter_business #For product search
+        begin
+          unless params[:business_type].present?
+            return  display_error("Business Type is missing!")
+          end
+          if params[:q].present?
+            @business = Business.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%")
+          elsif  params[:Suggested] == 'true'
+            @business = Business.where(business_type: params[:business_type])
+          elsif  params[:New] == 'true'
+            @business = Business.where(business_type: params[:business_type]).order(created_at: :desc)
+          elsif  params[:'Price (low to high)'] == 'true'
+            @business =Business.where(business_type: params[:business_type]).order(price: :asc)
+          elsif  params[:'Price (high to low)'] == 'true'
+            @business =Business.where(business_type: params[:business_type]).order(price: :desc)
+          else
+            @business =Business.all.order(title: :asc)
+          end
+
+          if I18n.locale.to_s == "ar"
+            @business.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, business: @business}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, business: @business}
+        end
+      end
+
       def show_business
         begin
           unless params[:id].present?

@@ -5,6 +5,34 @@ module Api
       skip_before_action :authenticate_user!
       #Search List
 
+      def filter_dishes #For product search
+        begin
+          if params[:q].present?
+            @dishes = ResturantDish.where("LOWER(title) LIKE LOWER(?)", "%#{params[:q]}%")
+          elsif  params[:Suggested] == 'true'
+            @dishes = ResturantDish.all.order(title: :asc)
+          elsif  params[:New] == 'true'
+            @dishes = ResturantDish.order(created_at: :desc)
+          elsif  params[:'Price (low to high)'] == 'true'
+            @dishes =ResturantDish.order(price: :asc)
+          elsif  params[:'Price (high to low)'] == 'true'
+            @dishes =ResturantDish.order(price: :desc)
+          else
+            @dishes =ResturantDish.all.order(title: :asc)
+          end
+
+          if I18n.locale.to_s == "ar"
+            @dishes.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, dishes: @dishes}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, dishes: @dishes}
+        end
+      end
 
       def fetch_dishes #For product search
         begin

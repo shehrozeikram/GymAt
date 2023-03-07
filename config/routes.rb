@@ -62,6 +62,8 @@ Rails.application.routes.draw do
         get '/fetch_shops', to: 'shops#fetch_shops'
         post '/checkout', to: 'shops#checkout'
         get '/fetch_related_products', to: 'shops#fetch_related_products'
+        get '/filter_shops', to: 'shops#filter_shops'
+
 
       end
 
@@ -78,14 +80,12 @@ Rails.application.routes.draw do
         get '/show_activity', to: 'training_programs#show_activity'
         get '/fetch_activities', to: 'training_programs#fetch_activities'
         post '/complete_activity', to: 'training_programs#complete_activity'
-
       end
 
 
 
       resource :payments do
         post '/payment', to: 'payments#payment'
-
       end
 
       resource :resturants do
@@ -98,11 +98,13 @@ Rails.application.routes.draw do
         get '/show_dish', to: 'resturants_dishes#show_dish'
         get '/fetch_dishes', to: 'resturants_dishes#fetch_dishes'
         get '/best_seller', to: 'resturants_dishes#best_seller'
+        get '/filter_dishes', to: 'resturants_dishes#filter_dishes'
       end
 
       resource :business do
         get '/show_business', to: 'businesses#show_business'
         get '/fetch_business', to: 'businesses#fetch_business'
+        get '/filter_business', to: 'businesses#filter_business'
 
         # subscription route
         post '/create_subscription', to: 'businesses#create_subscription'
