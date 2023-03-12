@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
       if review_params.present?
         @review = Review.new(review_params)
         if  @review.save!
-          render json: {api_status: true, locale: I18n.locale.to_s, review: @review}
+          render json: {api_status: true, locale: I18n.locale.to_s, review: @review.as_json( :include => [:user] )}
         end
       else
         render json: {api_status: false, locale: I18n.locale.to_s, error: @review.errors}
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
 
       # @service = @service.to_json
 
-      return render json: {api_status: true, locale: I18n.locale.to_s, review: @review }
+      return render json: {api_status: true, locale: I18n.locale.to_s, review: @review.as_json( :include => [:user] ) }
     rescue => e
       return display_error("Something Went Wrong!")
     end
