@@ -128,6 +128,57 @@ module Api
         end
       end
 
+
+      def fetch_gym_subscriptions
+        begin
+          unless params[:business_type].present?
+            return display_error('Business Type is not present')
+          end
+          if params[:user_id].present?
+            @user = User.find(params[:user_id])
+            @subscriptions = @user.subscriptions.where(business_type: "Gym")
+          else
+            @subscriptions = Subscription.all
+          end
+
+          if I18n.locale.to_s == "ar"
+            @subscriptions.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, gym_subscriptions: @subscriptions.as_json( :include => [:user] )}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, error: @subscriptions.errors}
+        end
+      end
+
+      def fetch_health_club_subscriptions
+        begin
+          unless params[:business_type].present?
+            return display_error('Business Type is not present')
+          end
+          if params[:user_id].present?
+            @user = User.find(params[:user_id])
+            @subscriptions = @user.subscriptions.where(business_type: "Health Club & Spa")
+          else
+            @subscriptions = Subscription.all
+          end
+
+          if I18n.locale.to_s == "ar"
+            @subscriptions.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, health_club_subscriptions: @subscriptions.as_json( :include => [:user] )}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, error: @subscriptions.errors}
+        end
+      end
+
       private
       def subscription_params
         params.permit( :full_name, :start_date, :subscription_type, :amount, :discount, :special_offer, :total_amount, :payment_id, :user_id, :business_id)
