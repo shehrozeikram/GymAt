@@ -120,6 +120,7 @@ Rails.application.routes.draw do
         get '/fetch_subscriptions' , to: 'businesses#fetch_subscriptions'
         get '/fetch_gym_subscriptions' , to: 'businesses#fetch_gym_subscriptions'
         get '/fetch_health_club_subscriptions' , to: 'businesses#fetch_health_club_subscriptions'
+
       end
 
       resource :dish_orders do
