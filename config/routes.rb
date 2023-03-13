@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
   get 'shopping_carts/index'
   mount Sidekiq::Web => '/jobmonitor'
 
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/default_locales', to: 'api#default_locales'
 
+      
       resource :user, only: %i[show update]
 
       devise_scope :user do
@@ -51,6 +53,9 @@ Rails.application.routes.draw do
       end
 
 
+      resource :trainer_videos do
+      get '/fetch_trainer_videos', to: 'trainer_videos#fetch_trainer_videos'
+      end
 
       resource :reviews do
         post '/create_review', to: 'reviews#create_review'
@@ -64,7 +69,6 @@ Rails.application.routes.draw do
         get '/fetch_related_products', to: 'shops#fetch_related_products'
         get '/filter_shops', to: 'shops#filter_shops'
 
-
       end
 
 
@@ -74,14 +78,18 @@ Rails.application.routes.draw do
         post '/create_trainer_subscription', to: 'trainers#create_trainer_subscription'
       end
 
+
+
+
+
       resource :training_programs do
+
         get '/show_training_program', to: 'training_programs#show_training_program'
         get '/fetch_training_programs', to: 'training_programs#fetch_training_programs'
         get '/show_activity', to: 'training_programs#show_activity'
         get '/fetch_activities', to: 'training_programs#fetch_activities'
         post '/complete_activity', to: 'training_programs#complete_activity'
       end
-
 
 
       resource :payments do
@@ -91,6 +99,7 @@ Rails.application.routes.draw do
       resource :resturants do
         get '/show_resturant', to: 'resturants#show_resturant'
         get '/fetch_resturants', to: 'resturants#fetch_resturants'
+
 
       end
 

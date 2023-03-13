@@ -20,7 +20,9 @@ class Trainer < ApplicationRecord
   mount_uploaders :avatar, AvatarUploader
   serialize :avatar, JSON
 
+
   has_many :trainer_subscriptions
   has_many :training_programs
+  has_many :trainer_videos
 
 end
