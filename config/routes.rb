@@ -118,6 +118,8 @@ Rails.application.routes.draw do
         # subscription route
         post '/create_subscription', to: 'businesses#create_subscription'
         get '/fetch_subscriptions' , to: 'businesses#fetch_subscriptions'
+        get '/fetch_gym_subscriptions' , to: 'businesses#fetch_gym_subscriptions'
+        get '/fetch_health_club_subscriptions' , to: 'businesses#fetch_health_club_subscriptions'
       end
 
       resource :dish_orders do
