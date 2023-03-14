@@ -91,7 +91,6 @@ Rails.application.routes.draw do
         post '/complete_activity', to: 'training_programs#complete_activity'
       end
 
-
       resource :payments do
         post '/payment', to: 'payments#payment'
       end
