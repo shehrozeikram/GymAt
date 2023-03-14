@@ -4,6 +4,7 @@
 #
 #  id                      :bigint           not null, primary key
 #  address                 :string
+#  age                     :float
 #  attachments             :text
 #  confirmation_sent_at    :datetime
 #  confirmation_token      :string           indexed
@@ -14,6 +15,7 @@
 #  email                   :string           not null, indexed
 #  encrypted_password      :string           not null
 #  first_name              :string
+#  height                  :float
 #  last_name               :string
 #  last_sign_in_at         :datetime
 #  last_sign_in_ip         :string
@@ -30,6 +32,7 @@
 #  uid                     :string           not null, indexed => [provider]
 #  unconfirmed_email       :string
 #  username                :string
+#  weight                  :float
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #
