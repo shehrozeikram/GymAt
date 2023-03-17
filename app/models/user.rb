@@ -65,6 +65,7 @@ class User < ApplicationRecord
   has_many :payments
   has_many :checkouts
   has_many :related_shops
+  has_many :fitness_data
   include DeviseTokenAuth::Concerns::User
   serialize :tokens
 

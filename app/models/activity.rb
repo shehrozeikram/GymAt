@@ -27,4 +27,5 @@ class Activity < ApplicationRecord
   belongs_to :trainer
 
   has_many :complete_activities
+  has_many :fitness_data
 end

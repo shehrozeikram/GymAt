@@ -57,6 +57,10 @@ Rails.application.routes.draw do
       get '/fetch_trainer_videos', to: 'trainer_videos#fetch_trainer_videos'
       end
 
+      post 'fitness_data/create_fitness_data'
+      get 'fitness_data/fetch_fitness_data'
+
+
       resource :reviews do
         post '/create_review', to: 'reviews#create_review'
         get '/show_reviews', to: 'reviews#show_reviews'
@@ -77,9 +81,6 @@ Rails.application.routes.draw do
         get '/fetch_trainers', to: 'trainers#fetch_trainers'
         post '/create_trainer_subscription', to: 'trainers#create_trainer_subscription'
       end
-
-
-
 
 
       resource :training_programs do
