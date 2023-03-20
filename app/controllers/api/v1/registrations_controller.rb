@@ -16,7 +16,7 @@ module Api
       end
 
       def render_create_error
-        raise ActiveRecord::RecordInvalid, @resource
+        render :error
       end
 
       def validate_post_data(which, message)
