@@ -93,6 +93,8 @@ module Api
           end
           if subscription_params.present?
             @subscription = Subscription.new(subscription_params)
+            business = Business.where(id: params[:business_id]).last
+            @subscription.business_type = business.business_type
             if  @subscription.save!
               render json: {api_status: true, locale: I18n.locale.to_s, subscription: @subscription}
             end
@@ -106,23 +108,40 @@ module Api
 
       def fetch_subscriptions
         begin
-          if params[:user_id].present?
-            @user = User.find(params[:user_id])
-            @subscriptions = @user.subscriptions.where(business_type: "Gym")
-          elsif
-            @subscriptions = @user.subscriptions.where(business_type: "Health Club & Spa")
-          else
-            @subscriptions = Subscription.all
+          unless params[:user_id].present?
+            return display_error('Please provide user')
           end
 
-          if I18n.locale.to_s == "ar"
-            @subscriptions.each do |pr|
-              pr.description = pr.ar_description
-              pr.title = pr.ar_title
+          unless params[:business_type].present?
+            return display_error('Please provide business type')
+          end
+
+            @user = User.where(id: params[:user_id]).last
+
+          if @user.present?
+            if  params[:business_type] == "Gym"
+              @subscriptions = @user.subscriptions.where(business_type: "Gym")
+
+            else params[:business_type] == "Health Club & Spa"
+              @subscriptions = @user.subscriptions.where(business_type: "Health Club & Spa")
+
             end
-          end
+            if @subscriptions.present?
+              if I18n.locale.to_s == "ar"
+                @subscriptions.each do |pr|
+                  pr.description = pr.ar_description
+                  pr.title = pr.ar_title
+                end
+              end
+              render json: {api_status: true, locale: I18n.locale.to_s, subscriptions: @subscriptions}
 
-          render json: {api_status: true, locale: I18n.locale.to_s, subscriptions: @subscriptions.as_json( :include => [:user] )}
+            else
+              render json: {api_status: false, locale: I18n.locale.to_s, error: 'This user doesnot have any subscription '}
+            end
+          else
+            render json: {api_status: false, locale: I18n.locale.to_s, error: 'This user doesnot exist '}
+          end
+          # render json: {api_status: true, locale: I18n.locale.to_s, subscriptions: @subscriptions}
         rescue => e
           render json: {api_status: false, locale: I18n.locale.to_s, error: @subscriptions.errors}
         end
@@ -181,7 +200,7 @@ module Api
 
       private
       def subscription_params
-        params.permit( :full_name, :start_date, :subscription_type, :amount, :discount, :special_offer, :total_amount, :payment_id, :user_id, :business_id)
+        params.permit( :full_name, :start_date, :subscription_type, :amount, :discount, :special_offer, :total_amount, :payment_id, :user_id, :business_id, :business_type)
       end
 
       private
