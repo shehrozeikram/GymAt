@@ -133,7 +133,7 @@ module Api
                   pr.title = pr.ar_title
                 end
               end
-              render json: {api_status: true, locale: I18n.locale.to_s, subscriptions: @subscriptions}
+              render json: {api_status: true, locale: I18n.locale.to_s, subscriptions: @subscriptions.as_json( :include => [:business] )}
 
             else
               render json: {api_status: false, locale: I18n.locale.to_s, error: 'This user doesnot have any subscription '}
