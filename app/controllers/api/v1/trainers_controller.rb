@@ -50,7 +50,7 @@ module Api
             end
           end
 
-          render json: {api_status: true, locale: I18n.locale.to_s, trainer_booking: @trainer_booking}
+          render json: {api_status: true, locale: I18n.locale.to_s, trainer_booking: @trainer_booking.as_json( :include => [:trainer] )}
         rescue => e
           render json: {api_status: false, locale: I18n.locale.to_s, error: 'internal error'}
         end
