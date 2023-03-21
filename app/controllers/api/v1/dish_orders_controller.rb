@@ -78,6 +78,8 @@ module Api
         begin
           if params[:user_id].present?
             @orders = DishOrder.where(user_id: params[:user_id])
+            @total_orders = @orders.all.count
+            @user = User.where(id: params[:user_id])
           else
             @orders = DishOrder.all
           end
@@ -89,7 +91,7 @@ module Api
             end
           end
 
-          render json: {api_status: true, locale: I18n.locale.to_s, orders: @orders.as_json( :include => [:user] )}
+          render json: {api_status: true, locale: I18n.locale.to_s,total_orders: @total_orders, orders: @orders.as_json( :include => [:resturant_dish] ), user: @user,  }
         rescue => e
           render json: {api_status: false, locale: I18n.locale.to_s, error: @orders.errors}
         end
