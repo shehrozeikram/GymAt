@@ -79,6 +79,7 @@ Rails.application.routes.draw do
       resource :trainers do
         get '/show_trainer', to: 'trainers#show_trainer'
         get '/fetch_trainers', to: 'trainers#fetch_trainers'
+        get '/fetch_trainer_booking', to: 'trainers#fetch_trainer_booking'
         post '/create_trainer_subscription', to: 'trainers#create_trainer_subscription'
       end
 

@@ -30,6 +30,33 @@ module Api
       end
 
 
+      def fetch_trainer_booking #For product search
+        begin
+
+          unless params[:trainer_name] && params[:start_date].present?
+            return display_error('All params are not present')
+          end
+
+          if params[:trainer_name] && params[:start_date].present?
+            @trainer_booking = TrainerSubscription.where(start_date: params[:start_date]).all.order(start_date: :asc)
+
+          else
+            @trainer_booking = TrainerSubscription.all.order(start_date: :asc)
+          end
+
+          if I18n.locale.to_s == "ar"
+            @trainer_booking.each do |pr|
+              pr.description = pr.ar_description
+              pr.title = pr.ar_title
+            end
+          end
+
+          render json: {api_status: true, locale: I18n.locale.to_s, trainer_booking: @trainer_booking}
+        rescue => e
+          render json: {api_status: false, locale: I18n.locale.to_s, trainer_booking: @trainer_booking.errors}
+        end
+      end
+
       def show_trainer
         begin
           unless params[:id].present?
