@@ -33,13 +33,12 @@ module Api
       def fetch_trainer_booking #For product search
         begin
 
-          unless params[:trainer_name] && params[:start_date].present?
+          unless params[:trainer_id] && params[:start_date].present?
             return display_error('All params are not present')
           end
 
-          if params[:trainer_name] && params[:start_date].present?
-            @trainer_booking = TrainerSubscription.where(start_date: params[:start_date]).all.order(start_date: :asc)
-
+          if params[:trainer_id] && params[:start_date].present?
+            @trainer_booking = TrainerSubscription.where(id: params[:trainer_id]).where(id: params[:trainer_id]).all.order(start_date: :asc)
           else
             @trainer_booking = TrainerSubscription.all.order(start_date: :asc)
           end
@@ -53,7 +52,7 @@ module Api
 
           render json: {api_status: true, locale: I18n.locale.to_s, trainer_booking: @trainer_booking}
         rescue => e
-          render json: {api_status: false, locale: I18n.locale.to_s, trainer_booking: @trainer_booking.errors}
+          render json: {api_status: false, locale: I18n.locale.to_s, error: 'internal error'}
         end
       end
 
