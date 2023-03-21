@@ -4,7 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  attachments   :text
-#  order_counter :integer
+#  order_counter :integer          default(0)
 #  price         :float
 #  title         :string
 #  created_at    :datetime         not null

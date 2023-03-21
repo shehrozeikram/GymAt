@@ -101,7 +101,7 @@ module Api
       private
 
       def dish_order_params
-        params.permit(:self_pickup, :delivery, :discount, :user_id, :resturant_dish_id, :payment_id, :longitude, :latitude)
+        params.permit(:self_pickup, :delivery, :discount, :user_id, :resturant_dish_id, :payment_id, :longitude, :latitude, :quantity)
       end
 
 
